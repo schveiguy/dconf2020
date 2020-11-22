@@ -12,6 +12,7 @@ struct Tagged(T1, T2) {
         enum useT2 = true;
     }
 
+    @safe:
     this(T1 t1) {
         values.t1 = t1;
         tag = useT1;
@@ -55,8 +56,7 @@ struct Tagged(T1, T2) {
     }
 }
 
-// not @safe yet
-unittest {
+@safe unittest {
     import std.exception : assertThrown;
     alias TU = Tagged!(int, int *);
     auto tu = TU(1);
